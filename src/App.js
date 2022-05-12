@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Signin from "./components/SignIn";
-import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login from "./pages/login/Login";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
@@ -23,12 +23,12 @@ function App() {
         />
 
         <Routes>
-          <Route path="/" element={<Signin />} />
+          <Route path="/" element={<Login />} />
           <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Home />
               </ProtectedRoute>
             }
           />
