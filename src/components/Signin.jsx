@@ -7,7 +7,7 @@ import UserContext from "../context/AuthContext";
 
 const Signin = () => {
   const navigate = useNavigate();
-  const { signIn, user } = useContext(UserContext);
+  const { signIn } = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

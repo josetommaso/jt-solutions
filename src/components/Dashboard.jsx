@@ -4,8 +4,6 @@ import UserContext from "../context/AuthContext";
 const Dashboard = () => {
   const { user, logout } = useContext(UserContext);
 
-  console.log(user);
-
   return (
     <div>
       <h1>Dashboard</h1>
