@@ -34,6 +34,11 @@ function App() {
               <Route path=":clientId" element={<Single />} />
               <Route path="new" element={<New />} />
             </Route>
+            <Route path="technicians">
+              <Route index element={<List />} />
+              <Route path=":technicianId" element={<Single />} />
+              <Route path="new" element={<New />} />
+            </Route>
           </Route>
         </Routes>
       </div>
