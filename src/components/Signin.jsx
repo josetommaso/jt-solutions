@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import BackgroundVideo from "../assets/planet-earth.mp4";
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { AuthErrorCodes } from "firebase/auth";
+import UserContext from "../context/AuthContext";
 
 const Signin = () => {
   const navigate = useNavigate();
-  const { signIn, user } = UserAuth();
+  const { signIn, user } = useContext(UserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,10 +15,10 @@ const Signin = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await signIn(email, password);
-      toast.success("Welcome " + user.email);
-      console.log(user);
-      navigate("/dashboard");
+      signIn(email, password).then((result) => {
+        toast.success("Welcome " + result.user.email);
+        navigate("/dashboard");
+      });
     } catch (e) {
       console.log(e.message);
       if (e.message.includes(AuthErrorCodes.USER_DELETED)) {
